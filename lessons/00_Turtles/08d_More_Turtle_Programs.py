@@ -19,8 +19,34 @@ turtle.setup(width=600, height=600)
 
 t = turtle.Turtle()
 
-t.shape("turtle")
-t.turtlesize(stretch_wid=10, stretch_len=10, outline=4) # Make the turtle really big
+def set_turtle_image(turtle, image_name):
+    """Set the turtle's shape to a custom image."""
+
+    from pathlib import Path
+    image_dir = Path(__file__).parent / "images"
+    image_path = str(image_dir / image_name)
+
+    screen = turtle.getscreen()
+    screen.addshape(image_path)
+    turtle.shape(image_path)
+
+screen = turtle.getscreen()
+
+def set_background_image(window, image_name):
+    """Set the background image of the turtle window to the image with the given name."""
+
+    from pathlib import Path
+    from PIL import Image
+
+
+    image_dir = Path(__file__).parent / "images"
+    image_path = str(image_dir / image_name)
+
+    image = Image.open(image_path)
+    
+    window.setup(image.width, image.height, startx=0, starty=0)
+    window.bgpic(image_path)
+
 
 def turtle_clicked(t, x, y):
     """Function that gets called when the user clicks on the turtle
@@ -38,7 +64,9 @@ def turtle_clicked(t, x, y):
     
     for i in range(0,360, 20): # Full circle, 20 degrees at a time
         t.tilt(20) # Tilt the turtle 20 degrees
-
+#set_turtle_image(t, "moustache3.gif")
+t.shape("turtle")
+set_background_image(screen,"leaguebot_bolt.gif")
 # Connect the turtle to the turtle_clicked function
 t.onclick(lambda x, y, t=t: turtle_clicked(t, x, y))
 

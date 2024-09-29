@@ -13,7 +13,7 @@ def set_background_image(window, image_name):
     """Set the background image of the turtle window to the image with the given name."""
 
     from pathlib import Path
-    from PIL import Image
+    from PIL import Image  
 
 
     image_dir = Path(__file__).parent / "images"
