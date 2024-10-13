@@ -11,3 +11,13 @@ Hint: See 08a_More Turtle Programs, section 'Change the Background Image' and
 
 ... # Your code here
 
+import turtle
+
+
+
+
+
+
+
+
+turtle.exitonclick()
